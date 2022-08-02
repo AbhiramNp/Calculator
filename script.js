@@ -8,23 +8,46 @@ display.innerText = 0;
 let firstNum = "";
 let secondNum = "";
 let op = "";
+let numArray1 = [];
+let numArray2 = [];
 
-function operate (Num1,Num2,op){
+
+
+
+function operate (Num1,Num2,oper){
 number.forEach(numbers =>{
     numbers.addEventListener('click',(e)=>{
-        if(op === ""){
+
+        
+        if(oper === "" ) {
         num1 = e.target.innerText;
-        Num1 = parseInt(num1);
-        display.innerText = Num1;
+        numArray1.push(num1);
+        console.log(numArray1);
+        if(numArray1.length <= 7){
+        Num1=numArray1.join("");
+        Num1=parseInt(Num1);
         console.log(Num1);
+        display.innerText = Num1;
         console.log(typeof Num1)
         }
         else{
+            alert("Maximum numbers");
+        }
+        }
+        else{
             num2 = e.target.innerText;
-            Num2 = parseInt(num2);
-            display.innerText = Num2;
+            numArray2.push(num2);
+            console.log(numArray2);
+            if(numArray2.length <= 7){
+            Num2=numArray2.join("");
+            Num2=parseInt(Num2);
             console.log(Num2);
+            display.innerText = Num2;
             console.log(typeof Num2)
+            }
+            else{
+                alert("Maximum numbers");
+            }
             }
 
         }
@@ -35,12 +58,14 @@ number.forEach(numbers =>{
 operator.forEach(operators => {
 operators.addEventListener('click',(e) => {
     if(e.target.innerText === '='){
-        switch(op){
+         
+        switch(oper){
             case '+':
                 let plus = Num1 + Num2
                 display.innerText = plus;
                 console.log(plus);
                 console.log(typeof plus);
+
                 break;
             case '-':
                 let minus = Num1 - Num2
@@ -55,7 +80,15 @@ operators.addEventListener('click',(e) => {
                 console.log(typeof multiple);
                 break;
             case '/':
+                if(Num2 === 0){
+                    alert("This cannot happen")
+                    break;
+                }
                 let divide = Num1 / Num2;
+                if(Num1 < Num2){
+                divide = divide.toFixed(2);
+                display.innerText = divide;
+                }
                 display.innerText = divide;
                 console.log(divide);
                 console.log(typeof divide);
@@ -68,13 +101,22 @@ operators.addEventListener('click',(e) => {
         }        
     else
     {
-        op = e.target.innerText;
-        console.log(op);
-        console.log(typeof op)
+        oper = e.target.innerText;
+        console.log(oper);
+        console.log(typeof oper)
         }
     })
 })
+
     
 };
 
+
+
 operate(firstNum,secondNum,op);
+
+clear.addEventListener('click',() => {
+    window.location.reload();
+})
+
+//
