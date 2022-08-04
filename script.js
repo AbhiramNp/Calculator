@@ -13,7 +13,6 @@ let numArray2 = [];
 
 
 
-
 function operate (Num1,Num2,oper){
 number.forEach(numbers =>{
     numbers.addEventListener('click',(e)=>{
@@ -55,6 +54,8 @@ number.forEach(numbers =>{
     )
 })
 
+
+function sumesh(Num1,Num2,opt){
 operator.forEach(operators => {
 operators.addEventListener('click',(e) => {
     if(e.target.innerText === '='){
@@ -65,7 +66,6 @@ operators.addEventListener('click',(e) => {
                 display.innerText = plus;
                 console.log(plus);
                 console.log(typeof plus);
-
                 break;
             case '-':
                 let minus = Num1 - Num2
@@ -107,16 +107,19 @@ operators.addEventListener('click',(e) => {
         }
     })
 })
+} 
+sumesh();
+
+}
 
     
-};
-
-
-
 operate(firstNum,secondNum,op);
+
+
+
+
 
 clear.addEventListener('click',() => {
     window.location.reload();
 })
 
-//
